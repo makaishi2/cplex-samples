@@ -1,0 +1,23 @@
+$ python ml-submit.py 
+401c79b4-c4b5-4ad9-b1b3-9f6b013fbeee
+queued...
+queued...
+queued...
+queued...
+queued...
+{
+  "completed_at": "2020-07-21T04:12:41.537Z",
+  "running_at": "2020-07-21T04:12:40.449Z",
+  "state": "completed"
+}
+  warehouseName  storeId
+0          Bonn        4
+1      Bordeaux        2
+2      Bordeaux        6
+3      Bordeaux        7
+4      Bordeaux        9
+5        London        8
+6        London       10
+7          Rome        1
+8          Rome        3
+9          Rome        5

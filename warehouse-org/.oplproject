@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?><project>
+	<version>1.0</version>
+	<configs>
+		<config category="opl" default="true" name="cloud">
+			<ref name="warehouse_cloud.mod" type="model">
+			</ref>
+			<ref name="warehouse_cloud.dat" type="data">
+			</ref>
+		</config>
+	</configs>
+	
+</project>
