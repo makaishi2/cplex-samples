@@ -11,7 +11,7 @@ apikey = 'xxxx'
 instance_id = 'xxxx'
 
 # DO Deployment ID
-deployment_uid = 'cf184900-bce6-4737-bfdb-ec8902057f35'
+deployment_uid = 'xxxx'
 
 # Input CSV File
 input_data1 = 'warehouses.csv'

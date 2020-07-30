@@ -4,7 +4,7 @@
 # $ pip install watson-machine-learning-client-V4
 # $ MACでは次が重要
 # $ export COPYFILE_DISABLE=1
-# $ tar warehouse-model.tar.gz warehouse_ml.mod
+# $ tar czvf warehouse-model.tar.gz warehouse_ml.mod
 
 import sys
 

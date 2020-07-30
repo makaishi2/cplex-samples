@@ -3,15 +3,11 @@ List Models
 ------------------------------------  -------------------------------------  ------------------------  ----------------
 GUID                                  NAME                                   CREATED                   TYPE
 b862c975-dc26-4b0a-94d5-06f099fb5a51  Auto generated DO opl model            2020-07-19T06:59:38.305Z  do-opl_12.10
-3bc5312b-88bc-4740-9302-8c80eab2e1d3  Auto generated DO docplex 12.10 model  2020-07-17T05:16:08.670Z  do-docplex_12.10
-6b79768b-b409-4efd-8dac-24372f75a893  Auto generated DO opl 12.10 model      2020-07-15T00:58:05.582Z  do-opl_12.10
 ------------------------------------  -------------------------------------  ------------------------  ----------------
 List Deployments
 ------------------------------------  ------------------------------------------  -----  ------------------------  -------------
 GUID                                  NAME                                        STATE  CREATED                   ARTIFACT_TYPE
 00616f70-64b0-46fb-97f1-3284bc8a6640  Auto generated DO opl deployment            ready  2020-07-19T06:59:38.400Z  model
-ece5c71c-a9a2-4be1-8100-8b20867f13f0  Auto generated DO docplex 12.10 deployment  ready  2020-07-17T05:16:08.764Z  model
-f762e5d4-375e-4ef8-9a27-6a038c007014  Auto generated DO opl 12.10 deployment      ready  2020-07-15T00:58:06.042Z  model
 ------------------------------------  ------------------------------------------  -----  ------------------------  -------------
 211f73af-6a7c-445c-a5b8-ffa526fd703f
 
@@ -36,6 +32,4 @@ cf184900-bce6-4737-bfdb-ec8902057f35
 GUID                                  NAME                                        STATE  CREATED                   ARTIFACT_TYPE
 cf184900-bce6-4737-bfdb-ec8902057f35  WAREHOUSE OPL Deployment                    ready  2020-07-21T04:06:42.233Z  model
 00616f70-64b0-46fb-97f1-3284bc8a6640  Auto generated DO opl deployment            ready  2020-07-19T06:59:38.400Z  model
-ece5c71c-a9a2-4be1-8100-8b20867f13f0  Auto generated DO docplex 12.10 deployment  ready  2020-07-17T05:16:08.764Z  model
-f762e5d4-375e-4ef8-9a27-6a038c007014  Auto generated DO opl 12.10 deployment      ready  2020-07-15T00:58:06.042Z  model
 ------------------------------------  ------------------------------------------  -----  ------------------------  -------------
