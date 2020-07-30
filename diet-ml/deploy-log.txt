@@ -1,7 +1,5 @@
-(base) MasanoMacBook-Air:local AKAISHI@jp.ibm.com$ python ml-deploy.py
+$ python ml-deploy.py
 779aad56-68d8-464b-89f5-2b46452b7a3d
-
-(base) MasanoMacBook-Air:local AKAISHI@jp.ibm.com$ python ml-list.py 
 List Models
 ------------------------------------  -------------------------------------  ------------------------  ----------------
 GUID                                  NAME                                   CREATED                   TYPE

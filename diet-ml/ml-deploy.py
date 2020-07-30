@@ -33,7 +33,7 @@ if __name__ == '__main__':
     client = WatsonMachineLearningAPIClient(wml_credentials)
 
     # 登録に必要な情報の設定
-    mdl_07_metadata = {
+    mdl_metadata = {
         client.repository.ModelMetaNames.NAME: "DIET_PYTHON",
         client.repository.ModelMetaNames.DESCRIPTION: "DIET_PYTHON",
         client.repository.ModelMetaNames.TYPE: "do-docplex_12.10",
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     }
 
     # モデルの登録
-    model_details = client.repository.store_model(model=tarfile, meta_props=mdl_07_metadata)
+    model_details = client.repository.store_model(model=tarfile, meta_props=mdl_metadata)
 
     # モデルUIDの取得
     model_uid = client.repository.get_model_uid(model_details)
