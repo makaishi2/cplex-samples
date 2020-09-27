@@ -4,7 +4,7 @@
 # $ pip install -U ibm-watson-machine-learning 
 # $ MACでは次が重要
 # $ export COPYFILE_DISABLE=1
-# $ tar diet-model.gz main.py model.py
+# $ tar czvf diet-model.gz main.py model.py
 # main.py 共通に使われるmodel呼び出し用コード
 # model.py DO実装コード model.builderで動作確認したもの
 
