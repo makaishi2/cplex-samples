@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 
 # コマンドによる事前準備
-# $ pip install watson-machine-learning-client-V4
+# $ pip install -U ibm-watson-machine-learning 
 # $ MACでは次が重要
 # $ export COPYFILE_DISABLE=1
-# $ tar czvf diet-model.tar.gz main.py model.py
+# $ tar diet-model.gz main.py model.py
+# main.py 共通に使われるmodel呼び出し用コード
+# model.py DO実装コード model.builderで動作確認したもの
 
 import sys
 
 # Watson ML credentails
 apikey = 'xxxx'
-instance_id = 'xxxx'
+location = 'us-south'
 
-tarfile = 'diet-model.tar.gz'
+tarfile = 'diet-model.gz'
 
 # --------------------------------------------------------
 # メインルーチン
@@ -23,22 +25,28 @@ if __name__ == '__main__':
     argv = sys.argv
     argc = len(argv)
 
+
     wml_credentials = {
         "apikey": apikey,
-        "instance_id": instance_id,
-        "url": 'https://us-south.ml.cloud.ibm.com'
+        "url": 'https://' + location + '.ml.cloud.ibm.com'
     }
 
-    from watson_machine_learning_client import WatsonMachineLearningAPIClient
-    client = WatsonMachineLearningAPIClient(wml_credentials)
+    from ibm_watson_machine_learning import APIClient
+    client = APIClient(wml_credentials)
 
+    client.spaces.list()
+    space_id = 'xxxx'
+    client.set.default_space(space_id)
+    
+    software_spec_uid = client.software_specifications.get_uid_by_name("do_12.10")
+    print(software_spec_uid)
+    
     # 登録に必要な情報の設定
     mdl_metadata = {
-        client.repository.ModelMetaNames.NAME: "DIET_PYTHON",
-        client.repository.ModelMetaNames.DESCRIPTION: "DIET_PYTHON",
+        client.repository.ModelMetaNames.NAME: "Diet Python",
+        client.repository.ModelMetaNames.DESCRIPTION: "Diet Python",
         client.repository.ModelMetaNames.TYPE: "do-docplex_12.10",
-        #client.repository.ModelMetaNames.TYPE: "do-opl_12.10",
-        client.repository.ModelMetaNames.RUNTIME_UID: "do_12.10"
+        client.repository.ModelMetaNames.SOFTWARE_SPEC_UID: software_spec_uid
     }
 
     # モデルの登録
@@ -48,17 +56,13 @@ if __name__ == '__main__':
     model_uid = client.repository.get_model_uid(model_details)
     print( model_uid )
 
-    # モデルの一覧表示
-    print('List Models')
-    client.repository.list_models()
-
-
     # Webサービス化に必要な情報
+    
     meta_props = {
-        client.deployments.ConfigurationMetaNames.NAME: "DIET_PYTHON Deployment",
-        client.deployments.ConfigurationMetaNames.DESCRIPTION: "DIET PYTHON Deployment",
+        client.deployments.ConfigurationMetaNames.NAME: "Diet Python Web",
+        client.deployments.ConfigurationMetaNames.DESCRIPTION: "Diet Python Web",
         client.deployments.ConfigurationMetaNames.BATCH: {},
-        client.deployments.ConfigurationMetaNames.COMPUTE: {'name': 'S', 'nodes': 1}
+        client.deployments.ConfigurationMetaNames.HARDWARE_SPEC: {'name': 'S', 'nodes': 1}  # S / M / XL
     }
 
     # Webサービス化
@@ -69,4 +73,3 @@ if __name__ == '__main__':
     
     # Webサービスの一覧表示
     client.deployments.list()
-    

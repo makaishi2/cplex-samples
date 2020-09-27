@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 
 # コマンドによる事前準備
-# pip install watson-machine-learning-client-V4
+# $ pip install -U ibm-watson-machine-learning 
 
 import sys
-import pandas as pd
 
 # Watson ML credentails
 apikey = 'xxxx'
-instance_id = 'xxxx'
+location = 'us-south'
+
+import pandas as pd
+
+# Watson ML credentails
 
 # DO Deployment ID
 deployment_uid = 'xxxx'
@@ -29,12 +32,15 @@ if __name__ == '__main__':
 
     wml_credentials = {
         "apikey": apikey,
-        "instance_id": instance_id,
-        "url": 'https://us-south.ml.cloud.ibm.com'
+        "url": 'https://' + location + '.ml.cloud.ibm.com'
     }
 
-    from watson_machine_learning_client import WatsonMachineLearningAPIClient
-    client = WatsonMachineLearningAPIClient(wml_credentials)
+    from ibm_watson_machine_learning import APIClient
+    client = APIClient(wml_credentials)
+
+    client.spaces.list()
+    space_id = '20f3d4c5-1faa-4c80-a361-4da68d362b0f'
+    client.set.default_space(space_id)
 
     input_df1 = pd.read_csv(input_data1)
     input_df2 = pd.read_csv(input_data2)
@@ -84,10 +90,12 @@ if __name__ == '__main__':
     # 最終ステータス表示
     print(json.dumps(detail2['status'], indent=2))
     
-    # 結果表示
     for item in detail:
         id = item['id']
         fields = item['fields']
         values = item['values']
         df_work = pd.DataFrame(values, columns=fields)
-        print(df_work.head(10))
+        name = id[:id.index('.csv')]
+        print('name = ', name)
+        print(df_work.head())
+        df_work.to_csv(id, index=False)
